@@ -1,0 +1,240 @@
+.App {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	font-size: calc(10px + 2vmin);
+}
+
+.List {
+	display: flex;
+	align-items: center;
+	font-size: 1rem;
+	padding-left: 10px;
+	width: 80%;
+	height: 50px;
+	border: none;
+	cursor: pointer;
+	background-color: inherit;
+	color: inherit;
+	outline: none;
+	border-color: #3574f0;
+	border-style: solid;
+	border-radius: 15px;
+}
+.List:hover {
+	box-shadow: 4px 4px 100px 100px rgba(150, 153, 155, 0.2) inset;
+	transition: box-shadow 0.5s;
+}
+
+.img {
+	width: 30px;
+	height: 30px;
+	position: fixed;
+	right: 5px;
+	top: 5px;
+	cursor: pointer;
+}
+
+.loader {
+	margin-top: 30px;
+	transform: translate(-50%, -50%);
+	width: 25px;
+	height: 25px;
+	border: 5px solid gray;
+	border-radius: 50%;
+	border-left-color: transparent;
+	animation: loader 1s infinite;
+}
+
+@keyframes loader {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+.inputMenu {
+	display: flex;
+	justify-content: left;
+	width: 60%;
+	height: 50px;
+	margin: 5px 5px 30px 5px;
+}
+.inputTask {
+	display: flex;
+	align-items: center;
+	font-size: 1rem;
+	padding-left: 10px;
+	width: 80%;
+	height: 50px;
+	border: none;
+	cursor: pointer;
+	background-color: inherit;
+	color: inherit;
+	outline: none;
+	border-color: #3574f0;
+	border-style: solid;
+	border-radius: 15px;
+}
+
+.inputTask::placeholder {
+	color: inherit;
+}
+
+.createTask {
+	margin: 0px 0px 0px 10px;
+	height: 55px;
+	width: 20%;
+	background-color: #5fad65;
+	border-style: none;
+	border-radius: 15px;
+	border-width: 1.5px;
+	cursor: pointer;
+	transition: box-shadow 0.5s;
+}
+.createTask:hover {
+	box-shadow: 4px 4px 100px 100px rgba(212, 211, 211, 0.2) inset;
+	transition: box-shadow 0.5s;
+}
+.updateTask {
+	margin: 0px 0px 0px 10px;
+	height: 50px;
+	width: 9%;
+	background-image: url(./assets/edit.png);
+	background-position: center;
+	background-size: 25px;
+	background-repeat: no-repeat;
+	background-color: #3574f0;
+	border-style: none;
+	border-radius: 15px;
+	border-width: 1.5px;
+	cursor: pointer;
+	transition: box-shadow 0.5s;
+}
+
+.updatingTask {
+	margin: 0px 0px 0px 10px;
+	height: 50px;
+	width: 9%;
+	background-image: url(./assets/tick.png);
+	background-position: center;
+	background-size: 25px;
+	background-repeat: no-repeat;
+	background-color: #5fad65;
+	border-style: none;
+	border-radius: 15px;
+	border-width: 1.5px;
+	cursor: pointer;
+	transition: box-shadow 0.5s;
+}
+
+.updateTask:hover {
+	box-shadow: 4px 4px 100px 100px rgba(212, 211, 211, 0.2) inset;
+	transition: box-shadow 0.5s;
+}
+
+.deleteTask {
+	margin: 0px 0px 0px 5px;
+	height: 50px;
+	width: 9%;
+	background-image: url(./assets/delete.png);
+	background-position: center;
+	background-size: 25px;
+	background-repeat: no-repeat;
+	background-color: #db5c5c;
+	border-style: none;
+	border-radius: 15px;
+	border-width: 1.5px;
+	cursor: pointer;
+	transition: box-shadow 0.5s;
+}
+
+.deleteTask:hover {
+	box-shadow: 4px 4px 100px 100px rgba(212, 211, 211, 0.2) inset;
+	transition: box-shadow 0.5s;
+}
+
+.todosList {
+	display: flex;
+	justify-content: left;
+	display: flex;
+	align-items: center;
+	font-size: 1rem;
+	width: 60%;
+	height: 50px;
+	cursor: pointer;
+	margin: 10px 0px;
+}
+
+.todosList:first-child {
+	margin: 30px 0px 0px 0px;
+}
+
+.todosList:last-child {
+	margin: 10px 0px 30px 0px;
+}
+
+.searchAndSortMenu {
+	display: flex;
+	justify-content: left;
+	width: 60%;
+	height: 50px;
+	margin: 5px 5px 30px 5px;
+}
+
+.inputFind {
+	display: flex;
+	align-items: center;
+	font-size: 1rem;
+	padding-left: 10px;
+	width: 80%;
+	height: 50px;
+	border: none;
+	cursor: pointer;
+	background-color: inherit;
+	color: inherit;
+	outline: none;
+	border-color: #3574f0;
+	border-style: solid;
+	border-radius: 15px;
+}
+.inputFind::placeholder {
+	color: inherit;
+}
+
+.sortTask {
+	margin: 0px 0px 0px 10px;
+	height: 55px;
+	width: 20%;
+	background-image: url(./assets/sort.png);
+	background-position: center;
+	background-size: 25px;
+	background-repeat: no-repeat;
+	background-color: #f2c55c;
+	border-style: none;
+	border-radius: 15px;
+	border-width: 1.5px;
+	cursor: pointer;
+	transition: box-shadow 0.5s;
+}
+.sortTask:hover {
+	box-shadow: 4px 4px 100px 100px rgba(212, 211, 211, 0.2) inset;
+	transition: box-shadow 0.5s;
+}
+
+.disabled {
+	box-shadow: 0px 0px 100px 100px rgb(117, 116, 116) inset;
+	transition: 0.3s;
+}
+.disabled:hover {
+	box-shadow: 0px 0px 100px 100px rgb(117, 116, 116) inset;
+	transition: 0.3s;
+}
+
+.error {
+	color: red;
+	font-size: 15px;
+}

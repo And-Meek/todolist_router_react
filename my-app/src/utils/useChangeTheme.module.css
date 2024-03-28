@@ -1,0 +1,10 @@
+.Dark {
+	background-color: #1e1f22;
+	color: #bdc0c9;
+	transition: 1s;
+}
+.Light {
+	background-color: #f7f8fa;
+	color: #000000;
+	transition: 1s;
+}
