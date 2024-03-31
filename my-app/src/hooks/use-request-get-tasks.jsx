@@ -46,7 +46,6 @@ export const useRequestGetTasks = (refreshTasksFlag) => {
 	};
 	const requestFindTask = ({ target }) => {
 		if (target.value.length !== 0) {
-			console.log('isSorted', isSorted);
 			if (isSorted) {
 				const filteredTasksArray = sortTasks.filter((task) => {
 					return task.title.includes(target.value);
