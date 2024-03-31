@@ -3,16 +3,16 @@ import { useRequestDeleteTask, useRequestUpdateTask } from '../hooks';
 import { useNavigate, useParams } from 'react-router-dom';
 
 export const TaskPage = () => {
-	const [refreshTasksFlag, setRefreshTasksFlag] = useState(false);
+	const [refreshTaskFlag, setRefreshTaskFlag] = useState(false);
 	const [isCreating, setIsCreating] = useState(false);
-	const refreshTasks = () => setRefreshTasksFlag(!refreshTasksFlag);
+	const refreshTask = () => setRefreshTaskFlag(!refreshTaskFlag);
 	const [isLoading, setIsLoading] = useState(false);
 	const [task, setTask] = useState({});
 
-	const { requestDeleteTask } = useRequestDeleteTask(setIsCreating, refreshTasks);
+	const { requestDeleteTask } = useRequestDeleteTask(setIsCreating, refreshTask);
 
 	const { setUpadateTask, clickOnUpdateTask, isUpdating, updatedInputRef, updateBtnRef } =
-		useRequestUpdateTask(refreshTasks, setIsCreating);
+		useRequestUpdateTask(refreshTask, setIsCreating, task.title);
 
 	const navigate = useNavigate();
 
@@ -32,9 +32,16 @@ export const TaskPage = () => {
 			.finally(() => {
 				setIsLoading(false);
 			});
-	}, [refreshTasksFlag, params.id, setTask, navigate]);
+	}, [refreshTaskFlag, params.id, setTask, navigate]);
 
-	const goBack = () => navigate(-1);
+	const goBack = () => {
+		navigate('/');
+	};
+
+	const handlerDeleteTask = (target) => {
+		requestDeleteTask(target);
+		setTimeout(() => navigate('/'), 1000);
+	};
 
 	const handlerUpdateTask = ({ target }) => {
 		setUpadateTask(target.value);
@@ -63,7 +70,7 @@ export const TaskPage = () => {
 				className={`${'deleteTask'} ${isCreating ? 'disabled' : ''}`}
 				id={task.id}
 				disabled={isCreating}
-				onClick={requestDeleteTask}
+				onClick={handlerDeleteTask}
 			></button>
 		</div>
 	) : (

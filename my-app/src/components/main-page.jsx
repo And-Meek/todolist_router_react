@@ -4,13 +4,12 @@ import { useRequestAddTask, useRequestGetTasks } from '../hooks';
 
 export const MainPage = () => {
 	const [newTask, setNewTask] = useState('');
-	const [refreshTasksFlag, setRefreshTasksFlag] = useState(false);
 	const [isCreating, setIsCreating] = useState(false);
 	const [error, setError] = useState(false);
+	const [refreshTasksFlag, setRefreshTasksFlag] = useState(false);
 	const refreshTasks = () => setRefreshTasksFlag(!refreshTasksFlag);
-
 	const { filteredTasks, isLoading, requestSortTask, requestFindTask } =
-		useRequestGetTasks(refreshTasksFlag, refreshTasks);
+		useRequestGetTasks(refreshTasksFlag);
 
 	const { requestAddTask } = useRequestAddTask(
 		setIsCreating,
@@ -65,7 +64,7 @@ export const MainPage = () => {
 					<div className="todosList" key={id}>
 						<NavLink to={`task/${id}`}>
 							<div className="List" defaultValue={title} id={id}>
-								{title}
+								<p className="text">{title}</p>
 							</div>
 						</NavLink>
 					</div>

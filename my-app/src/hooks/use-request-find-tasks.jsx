@@ -1,6 +1,5 @@
 export const useRequestFindTasks = (isSorted, sortTasks, tasks, setFilteredTasks) => {
 	const requestFindTask = ({ target }) => {
-		console.log('find', isSorted);
 		if (target.value.length !== 0) {
 			if (isSorted) {
 				const filteredTasksArray = sortTasks.filter((task) => {

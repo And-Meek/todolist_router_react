@@ -108,8 +108,8 @@
 		background-size: 10px;
 	}
 	.updateTask .deleteTask {
-		width: 15%;
-		/* background-image: url(./assets/edit.png); */
+		width: 35px;
+		background-image: url(./assets/edit.png);
 		background-position: center;
 		background-size: 15px;
 		background-repeat: no-repeat;
@@ -310,4 +310,10 @@ img {
 	top: 20px;
 	box-shadow: 4px 4px 100px 100px rgba(150, 153, 155, 0.2) inset;
 	transition: 0.3s;
+}
+
+.text {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }

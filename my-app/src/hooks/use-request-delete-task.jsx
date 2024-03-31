@@ -1,10 +1,10 @@
-export const useRequestDeleteTask = (setIsCreating, refreshTasks) => {
+export const useRequestDeleteTask = (setIsCreating, refreshTask) => {
 	const requestDeleteTask = ({ target }) => {
 		setIsCreating(true);
 		fetch(`http://localhost:3005/tasks/${target.id}`, {
 			method: 'DELETE',
 		})
-			.then(() => refreshTasks())
+			.then(() => refreshTask())
 			.finally(() => setIsCreating(false));
 	};
 
