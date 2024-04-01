@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRequestDeleteTask, useRequestUpdateTask } from '../hooks';
 import { useNavigate, useParams } from 'react-router-dom';
 
-export const TaskPage = () => {
+export const TaskPage = ({ refreshTasks }) => {
 	const [refreshTaskFlag, setRefreshTaskFlag] = useState(false);
 	const [isCreating, setIsCreating] = useState(false);
 	const refreshTask = () => setRefreshTaskFlag(!refreshTaskFlag);
@@ -35,7 +35,7 @@ export const TaskPage = () => {
 	}, [refreshTaskFlag, params.id, setTask, navigate]);
 
 	const goBack = () => {
-		navigate('/');
+		navigate(-1);
 	};
 
 	const handlerDeleteTask = (target) => {
@@ -64,7 +64,7 @@ export const TaskPage = () => {
 				className={`${'updateTask'} ${isCreating ? 'disabled' : ''}`}
 				id={task.id}
 				disabled={isCreating}
-				onClick={clickOnUpdateTask}
+				onClick={(event) => clickOnUpdateTask(event, refreshTasks)}
 			></button>
 			<button
 				className={`${'deleteTask'} ${isCreating ? 'disabled' : ''}`}

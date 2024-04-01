@@ -15,17 +15,7 @@ export const useRequestGetTasks = (refreshTasksFlag) => {
 				setTasks(loadedTasks);
 				const futureSort = [...loadedTasks];
 				const futureFind = [...loadedTasks];
-				setSortTasks(
-					futureSort.sort((a, b) => {
-						if (a.title < b.title) {
-							return -1;
-						}
-						if (a.title > b.title) {
-							return 1;
-						}
-						return 0;
-					}),
-				);
+				setSortTasks(futureSort.toSorted((a, b) => a.title.localeCompare(b.title)));
 				setFilteredTasks(futureFind);
 			})
 			.catch((error) => {
@@ -48,12 +38,12 @@ export const useRequestGetTasks = (refreshTasksFlag) => {
 		if (target.value.length !== 0) {
 			if (isSorted) {
 				const filteredTasksArray = sortTasks.filter((task) => {
-					return task.title.includes(target.value);
+					return task.title.toLowerCase().includes(target.value.toLowerCase());
 				});
 				return setFilteredTasks(filteredTasksArray);
 			} else {
 				const filteredTasksArray = tasks.filter((task) => {
-					return task.title.includes(target.value);
+					return task.title.toLowerCase().includes(target.value.toLowerCase());
 				});
 				return setFilteredTasks(filteredTasksArray);
 			}

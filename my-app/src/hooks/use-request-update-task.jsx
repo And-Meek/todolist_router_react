@@ -8,13 +8,13 @@ export const useRequestUpdateTask = (refreshTask, setIsCreating, task) => {
 	const updatedInputRef = useRef(null);
 	const updateBtnRef = useRef(null);
 
-	const clickOnUpdateTask = ({ target }) => {
+	const clickOnUpdateTask = ({ target }, refreshTasks) => {
 		setIsUpdating(true);
 		flushSync(() => {
 			setIdRef(target.id);
 		});
 		if (updateBtnRef.current.className === 'updateTask updatingTask') {
-			requestUpdateTask(target);
+			requestUpdateTask(target, refreshTasks);
 			updateBtnRef.current.classList.remove('updatingTask');
 		} else {
 			updateBtnRef.current.classList.add('updatingTask');
@@ -22,7 +22,7 @@ export const useRequestUpdateTask = (refreshTask, setIsCreating, task) => {
 		}
 	};
 
-	const requestUpdateTask = (target) => {
+	const requestUpdateTask = (target, refreshTasks) => {
 		setIsCreating(true);
 		fetch(`http://localhost:3005/tasks/${target.id}`, {
 			method: 'PATCH',
@@ -39,6 +39,7 @@ export const useRequestUpdateTask = (refreshTask, setIsCreating, task) => {
 			})
 			.then(updateBtnRef.current.classList.remove('updatingTask'))
 			.finally(() => {
+				refreshTasks();
 				setIsCreating(false);
 			});
 	};

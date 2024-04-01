@@ -2,12 +2,10 @@ import { NavLink, Outlet, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useRequestAddTask, useRequestGetTasks } from '../hooks';
 
-export const MainPage = () => {
+export const MainPage = ({ refreshTasks, refreshTasksFlag }) => {
 	const [newTask, setNewTask] = useState('');
 	const [isCreating, setIsCreating] = useState(false);
 	const [error, setError] = useState(false);
-	const [refreshTasksFlag, setRefreshTasksFlag] = useState(false);
-	const refreshTasks = () => setRefreshTasksFlag(!refreshTasksFlag);
 	const { filteredTasks, isLoading, requestSortTask, requestFindTask } =
 		useRequestGetTasks(refreshTasksFlag);
 
